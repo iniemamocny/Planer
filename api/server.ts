@@ -1,4 +1,4 @@
-import express, { type Request, type Response } from 'express';
+import express, { type NextFunction, type Request, type Response } from 'express';
 import { getHealthSummary } from '../core/modules/health.js';
 
 const app = express();
@@ -26,6 +26,17 @@ app.get('/', (_req: Request, res: Response) => {
 app.get('/health', (_req: Request, res: Response) => {
   res.json(getHealthSummary());
 });
+
+app.use((_req: Request, res: Response) => {
+  res.status(404).send('Not Found');
+});
+
+app.use(
+  (err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+    console.error('Unhandled error:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  },
+);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
