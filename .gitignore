@@ -1,4 +1,5 @@
 node_modules/
 dist/
+dist-frontend/
 .env
 .DS_Store
