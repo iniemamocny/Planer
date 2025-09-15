@@ -3,7 +3,7 @@
 [![License: NonCommercial](https://img.shields.io/badge/License-NonCommercial-blue.svg)](LICENSE)
 
 
-# MebloPlan (Kitchi)
+# MebloPlan 
 
 Projekt zawiera podstawowe moduły logiki aplikacji bez interfejsu graficznego.
 
