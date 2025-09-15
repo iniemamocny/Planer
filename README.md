@@ -9,9 +9,9 @@ Projekt zawiera podstawowe moduły logiki aplikacji Planer bez interfejsu grafic
 ## Instalacja i uruchomienie
 
 1. `npm install` – instalacja zależności projektu.
-2. `npm run dev` – uruchomienie frontendu Vite.
+2. `npm run dev` – uruchomienie środowiska deweloperskiego frontendu Vite.
 3. `npm run start` – uruchomienie backendu.
-4. `npm run build` oraz `npm run build:frontend` – budowa wersji produkcyjnej.
+4. `npm run build` / `npm run build:frontend` – przygotowanie wersji produkcyjnej.
 
 Wyniki kompilacji zapisywane są w katalogach `dist` (backend) oraz `dist-frontend` (frontend).
 
