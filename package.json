@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "ts-node src/server.ts",
+    "start": "ts-node api/server.ts",
     "dev": "vite --open",
     "build": "tsc",
     "build:frontend": "vite build"
