@@ -1,4 +1,4 @@
-import { getHealthSummary } from '../core/modules/health.js';
+import { getHealthSummary } from '@core/modules/health.js';
 
 const summary = getHealthSummary();
 console.log(
