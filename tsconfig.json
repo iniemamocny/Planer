@@ -54,5 +54,5 @@
     "core/**/*.ts",
     "core/**/*.tsx"
   ],
-  "exclude": ["ui"]
+  "exclude": ["ui", "node_modules", "dist"]
 }
