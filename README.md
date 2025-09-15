@@ -9,6 +9,6 @@ Projekt zawiera podstawowe moduły logiki aplikacji bez interfejsu graficznego.
 
 ## Licencja
 
-Projekt jest udostępniany na licencji **MebloPlan Non-Commercial License 1.0**. Użytkowanie, kopiowanie oraz modyfikacja kodu są dozwolone wyłącznie w celach niekomercyjnych i przy zachowaniu informacji o autorach. Wykorzystanie komercyjne wymaga wcześniejszej zgody wszystkich współautorów.
+Projekt jest udostępniany na licencji **MebloPlan Non-Commercial License 1.0**. Użytkowanie, kopiowanie oraz modyfikacja kodu są dozwolone wyłącznie w celach niekomercyjnych i przy zachowaniu informacji o autorach. Wykorzystanie komercyjne wymaga wcześniejszej zgody wszystkich współautorów. Pełna treść licencji znajduje się w pliku [LICENSE](LICENSE).
 
 Wszyscy współautorzy wyrazili zgodę na zmianę licencji. Zmiana obowiązuje jedynie dla wersji opublikowanych po 2025-08-30; wcześniejsze wydania pozostają na licencji MIT.
