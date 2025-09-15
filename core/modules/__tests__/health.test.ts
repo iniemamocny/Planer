@@ -9,7 +9,7 @@ describe('health module', () => {
     jest.useRealTimers();
   });
 
-  it('returns default API health details', async () => {
+  it('creates an operational API health entry with a valid timestamp', async () => {
     const { getApiHealth } = await import('../health.ts');
 
     const health = getApiHealth();
@@ -21,40 +21,46 @@ describe('health module', () => {
     });
     expect(typeof health.checkedAt).toBe('string');
     expect(new Date(health.checkedAt).toString()).not.toBe('Invalid Date');
+
+    const custom = getApiHealth('All systems go');
+    expect(custom.message).toBe('All systems go');
   });
 
-  it('reports uptime that increases over time', async () => {
+  it('reports uptime based on the elapsed seconds since startup', async () => {
     jest.useFakeTimers();
 
-    const initial = new Date('2024-01-01T00:00:00.000Z');
-    jest.setSystemTime(initial);
+    const start = new Date('2024-01-01T00:00:00.000Z');
+    jest.setSystemTime(start);
 
     const { getUptimeSeconds } = await import('../health.ts');
 
     expect(getUptimeSeconds()).toBe(0);
 
-    jest.advanceTimersByTime(2000);
-    const uptimeAfterTwoSeconds = getUptimeSeconds();
-    expect(uptimeAfterTwoSeconds).toBe(2);
+    jest.advanceTimersByTime(2_000);
+    expect(getUptimeSeconds()).toBe(2);
 
-    jest.advanceTimersByTime(1500);
-    expect(getUptimeSeconds()).toBeGreaterThan(uptimeAfterTwoSeconds);
+    jest.advanceTimersByTime(3_500);
+    expect(getUptimeSeconds()).toBe(5);
   });
 
-  it('returns a summary with health details and uptime', async () => {
+  it('returns a summary containing the latest health details and uptime', async () => {
+    jest.useFakeTimers();
+
+    const start = new Date('2024-02-02T10:00:00.000Z');
+    jest.setSystemTime(start);
+
     const { getHealthSummary } = await import('../health.ts');
+
+    jest.advanceTimersByTime(42_000);
 
     const summary = getHealthSummary();
 
-    expect(summary).toEqual({
-      health: expect.objectContaining({
-        service: 'api',
-        message: 'Planer API is running smoothly',
-        level: 'operational',
-        checkedAt: expect.any(String),
-      }),
-      uptimeSeconds: expect.any(Number),
+    expect(summary.health).toMatchObject({
+      service: 'api',
+      message: 'Planer API is running smoothly',
+      level: 'operational',
     });
-    expect(summary.uptimeSeconds).toBeGreaterThanOrEqual(0);
+    expect(new Date(summary.health.checkedAt).toString()).not.toBe('Invalid Date');
+    expect(summary.uptimeSeconds).toBe(42);
   });
 });
