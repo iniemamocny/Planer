@@ -2,8 +2,14 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["core/*"],
+      "@api/*": ["api/*"],
+      "@ui/*": ["ui/*"]
+    },
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -41,5 +47,12 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "api/**/*.ts",
+    "core/**/*.ts",
+    "core/**/*.tsx"
+  ],
+  "exclude": ["ui"]
 }

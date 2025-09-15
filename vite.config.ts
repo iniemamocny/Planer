@@ -3,11 +3,14 @@ import react from '@vitejs/plugin-react';
 import path from 'node:path';
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'frontend'),
+  root: path.resolve(__dirname, 'ui'),
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'frontend', 'src'),
+      '@': path.resolve(__dirname, 'ui', 'src'),
+      '@ui': path.resolve(__dirname, 'ui', 'src'),
+      '@core': path.resolve(__dirname, 'core'),
+      '@api': path.resolve(__dirname, 'api'),
     },
   },
   server: {
