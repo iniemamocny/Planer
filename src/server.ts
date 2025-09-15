@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { type Request, type Response } from 'express';
 
 const app = express();
 const port = Number.parseInt(process.env.PORT ?? '', 10) || 3000;
 
-app.get('/', (_req, res) => {
+app.get('/', (_req: Request, res: Response) => {
   res.send(`<!DOCTYPE html>
 <html lang="en">
   <head>
